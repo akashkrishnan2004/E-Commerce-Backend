@@ -5,6 +5,16 @@ import * as product from "../controllers/product-controller.js";
 import * as message from "../controllers/message-controller.js";
 import * as cart from "../controllers/cart-controller.js";
 
+// import {
+//   createAnnouncement,
+//   getAllAnnouncements,
+//   getActiveAnnouncements,
+//   updateAnnouncement,
+//   deleteAnnouncement,
+// } from "../controllers/announcementController.js";
+
+import * as announcement from "../controllers/announcement-controller.js"
+
 const router = express.Router();
 
 // Register Route
@@ -42,4 +52,15 @@ router.get("/user-cart/:userId", cart.getUserCart); // get users carted products
 router.get("/is-in-cart/:userId/:productId", cart.isInCart);
 router.get("/get-cart-item/:userId/:productId", cart.getCartProductById);
 
+/* Admin Routes */
+router.post("/create-announcement", announcement.createAnnouncement);
+router.get("/get-all-announcements", announcement.getAllAnnouncements);
+router.put("/update-announcement/:id", announcement.updateAnnouncement);
+router.delete("/delete-announcement/:id", announcement.deleteAnnouncement);
+
+/* User Route */
+router.get("/get-active-announcements", announcement.getActiveAnnouncements);
+
+
 export default router;
+
